@@ -2,7 +2,7 @@
 
 namespace ExploreYourNeighbourhood
 {
-    public partial class ExploreYourNeighbourhoodPage : ContentPage
+    public partial class ExploreYourNeighbourhoodPage : TabbedPage
     {
         public ExploreYourNeighbourhoodPage()
         {
