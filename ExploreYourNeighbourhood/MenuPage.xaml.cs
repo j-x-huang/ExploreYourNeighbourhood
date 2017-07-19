@@ -10,6 +10,8 @@ namespace ExploreYourNeighbourhood
         public MenuPage()
         {
             InitializeComponent();
-        }
+			listView.ItemTemplate = new DataTemplate(typeof(CustomCell));
+
+		}
     }
 }
