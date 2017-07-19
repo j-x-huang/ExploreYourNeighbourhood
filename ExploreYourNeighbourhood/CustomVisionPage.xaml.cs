@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
@@ -59,6 +60,10 @@ namespace ExploreYourNeighbourhood
 		async Task MakePredictionRequest(MediaFile file)
 		{
 			var client = new HttpClient();
+			var probabilityList = new List<double>();
+			var itemList = new List<string>();
+            StatusLabel.Text = "Analysing..";
+
 
 			client.DefaultRequestHeaders.Add("Prediction-Key", "b582db3effb145019697ca4ea0b6a6f6");
 
@@ -85,11 +90,56 @@ namespace ExploreYourNeighbourhood
                     var Probability = from p in rss["Predictions"] select (string)p["Probability"];
                     var Tag = from p in rss["Predictions"] select (string)p["Tag"];
 
+					foreach (var item in Tag)
+					{
+						//TagLabel.Text += item + ": \n";
+                        itemList.Add(item);
+						System.Diagnostics.Debug.WriteLine(item);
+
+					}
+
                     foreach (var item in Probability)
                     {
-                        PredictionLabel.Text += item + "\n";
+						//PredictionLabel.Text += item + "\n";
+						
+                        if (item.ToString().ToLower().Contains("e"))
+						{
+							double x = Double.Parse(item.ToString(), System.Globalization.NumberStyles.Float);
+							probabilityList.Add(x);
+						}
+						else
+						{
+							probabilityList.Add(Convert.ToDouble(item.ToString()));
+						}
+						System.Diagnostics.Debug.WriteLine(item);
 
+
+					}
+
+
+                    int maxIndex = probabilityList.IndexOf(probabilityList.Max());
+                    var itemName = itemList[maxIndex];
+                    string realName="";
+                    switch (itemName)
+                    {
+                        case "Stop":
+                            realName = "stop sign";
+                            break;
+                        case "Post":
+                            realName = "post box";
+                            break;
+                        case "Bench":
+                            realName = "park bench";
+                            break;
+                        case "Booth":
+                            realName = "phone booth";
+                            break;
+                        case "Pohutukawa":
+                            realName = "Pohutukawa";
+                            break;
+                            
                     }
+                    StatusLabel.Text = "You have found a " + realName;
                 } else {
                     StatusLabel.Text = "Bad server response";
                 }
