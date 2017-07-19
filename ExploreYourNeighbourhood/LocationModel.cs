@@ -14,6 +14,12 @@ namespace ExploreYourNeighbourhood
         [JsonProperty(PropertyName = "Latitude")]
         public string Latitude { get; set; }
 
+		[JsonProperty(PropertyName = "Item")]
+		public string Item { get; set; }
+
+		[JsonProperty(PropertyName = "Date")]
+		public string CurrentDate { get; set; }
+
 		public string City { get; set; }
 
 

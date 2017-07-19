@@ -3,8 +3,30 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="ExploreYourNeighbourhood.LocationPage"
     Title="Locations">
-	<ContentPage.Content>
-        <Label Text="Locations" VerticalOptions="Center" HorizontalOptions="Center" />
-
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Refresh" TextColor="White" BackgroundColor="Aqua" Clicked="Handle_ClickedAsync" Margin="20"/>
+            <ListView x:Name="LocationList" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45*" />
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="35*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding City}" Margin="20,0,0,0"/>
+                                <Label Grid.Column="1" Text="{Binding Item}" />
+                                <Label Grid.Column="2" Text="{Binding CurrentDate}" Margin="0,0,20,0" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
