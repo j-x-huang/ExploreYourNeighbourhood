@@ -7,10 +7,16 @@ namespace ExploreYourNeighbourhood
 {
     public partial class MenuPage : ContentPage
     {
+        ItemViewModel vm;
         public MenuPage()
         {
             InitializeComponent();
-			listView.ItemTemplate = new DataTemplate(typeof(CustomCell));
+            vm = new ItemViewModel();
+            listView.ItemsSource = vm.Items;
+			//BindingContext = vm;
+
+			DateTime dateTime = DateTime.UtcNow.Date;
+            System.Diagnostics.Debug.WriteLine(dateTime.ToString("dd/MM/yyyy"));
 
 		}
     }

@@ -11,15 +11,11 @@
             <ListView   x:Name="listView" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding ImgSrc}"/>
-                                    <Label Text="{Binding Name}"/>
-                                </StackLayout>
-                        </ViewCell>    
+                        <ImageCell Text="{Binding Name}"
+                        Detail="{Binding Difficulty}" 
+                        DetailColor="{Binding Colour}" ImageSource="{Binding ImgSrc}"></ImageCell>   
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                
             </ListView>
         </StackLayout>
     </ContentPage.Content>
