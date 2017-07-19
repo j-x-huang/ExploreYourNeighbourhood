@@ -15,8 +15,8 @@ namespace ExploreYourNeighbourhood
             listView.ItemsSource = vm.Items;
 			//BindingContext = vm;
 
-			DateTime dateTime = DateTime.UtcNow.Date;
-            System.Diagnostics.Debug.WriteLine(dateTime.ToString("dd/MM/yyyy"));
+			//DateTime dateTime = DateTime.UtcNow.Date;
+            //System.Diagnostics.Debug.WriteLine(dateTime.ToString("dd/MM/yyyy"));
 
 		}
     }

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using Plugin.Geolocator;
+
 
 using Xamarin.Forms;
 
@@ -16,6 +18,7 @@ namespace ExploreYourNeighbourhood
 {
     public partial class CustomVisionPage : ContentPage
     {
+        string itemToPost = "";
         public CustomVisionPage()
         {
             InitializeComponent();
@@ -140,6 +143,8 @@ namespace ExploreYourNeighbourhood
                             
                     }
                     StatusLabel.Text = "You have found a " + realName;
+                    itemToPost = realName;
+                    await postLocationAsync();
                 } else {
                     StatusLabel.Text = "Bad server response";
                 }
@@ -147,6 +152,30 @@ namespace ExploreYourNeighbourhood
 				//Get rid of file once we have finished using it
 				file.Dispose();
 			}
+		}
+
+		async Task postLocationAsync()
+		{
+
+			var locator = CrossGeolocator.Current;
+			locator.DesiredAccuracy = 50;
+
+			var position = await locator.GetPositionAsync(10000);
+
+			DateTime dateTime = DateTime.UtcNow.Date;
+
+
+			LocationModel model = new LocationModel()
+            {
+                Longitude = position.Longitude.ToString(),
+                Latitude = position.Latitude.ToString(),
+                Item = itemToPost,
+                CurrentDate = dateTime.ToString("dd/MM/yyyy")
+
+			};
+
+			await AzureManager.AzureManagerInstance.PostLocationInformation(model);
+
 		}
     }
 }

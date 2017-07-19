@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="ExploreYourNeighbourhood.LocationPage"
-    Title="Locations">
+    Title="Locations" Icon="map_ico.png">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Refresh" TextColor="White" BackgroundColor="Aqua" Clicked="Handle_ClickedAsync" Margin="20"/>
+            <Button Text="Refresh" TextColor="White" BackgroundColor="Aqua" Clicked="Handle_ClickedAsync" Margin="10, 20, 10, 0"/>
             <ListView x:Name="LocationList" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>

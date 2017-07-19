@@ -158,12 +158,21 @@
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\home.png" />
     <BundleResource Include="Resources\parkBench.jpg" />
-    <BundleResource Include="Resources\poh.jpg" />
     <BundleResource Include="Resources\post.jpg" />
     <BundleResource Include="Resources\stop.jpg" />
-    <BundleResource Include="Resources\booth.JPG" />
+    <BundleResource Include="Resources\cam_ico.png" />
+    <BundleResource Include="Resources\map_ico.png" />
+    <BundleResource Include="Resources\menu_ico.png" />
+    <BundleResource Include="Resources\crop_booth.jpg" />
+    <BundleResource Include="Resources\crop_poh.jpg" />
+    <BundleResource Include="Resources\crop_post.jpg" />
+    <BundleResource Include="Resources\mainIco.png" />
+    <BundleResource Include="Resources\mainIco2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -3,7 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="ExploreYourNeighbourhood.MenuPage" 
     Title="Home"
-    Icon="home.png">
+    Icon="menu_ico.png">
+            
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Find these things" HorizontalOptions="Center" Margin="20">
@@ -13,10 +15,11 @@
                     <DataTemplate>
                         <ImageCell Text="{Binding Name}"
                         Detail="{Binding Difficulty}" 
-                        DetailColor="{Binding Colour}" ImageSource="{Binding ImgSrc}"></ImageCell>   
+                        DetailColor="{Binding Colour}" ImageSource="{Binding ImgSrc}"></ImageCell> 
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </StackLayout> 
+        
     </ContentPage.Content>
 </ContentPage>
