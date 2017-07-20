@@ -141,6 +141,8 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\mainIcoSmall.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\mainIcoMedium.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -169,6 +171,8 @@
     <BundleResource Include="Resources\crop_post.jpg" />
     <BundleResource Include="Resources\mainIco.png" />
     <BundleResource Include="Resources\mainIco2.png" />
+    <BundleResource Include="Resources\mainIcoMedium.png" />
+    <BundleResource Include="Resources\mainIcoSmall.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
