@@ -34,14 +34,5 @@ namespace ExploreYourNeighbourhood
             Items = new Item().GetItems();
         }
     }
-    /*
-    public class Data
-    {
-        public static ObservableCollection<Item> itemList = new ObservableCollection<Item>() {
-            new Item(){ Name="Park bench", ImgSrc="bench.png" },
-            new Item(){ Name="Stop sign", ImgSrc="bench.png" }
-        };
 
-    }
-    */
 }

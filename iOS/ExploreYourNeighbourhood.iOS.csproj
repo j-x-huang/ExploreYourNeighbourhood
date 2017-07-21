@@ -171,7 +171,9 @@
     <BundleResource Include="Resources\crop_post.jpg" />
     <BundleResource Include="Resources\mainIco.png" />
     <BundleResource Include="Resources\mainIco2.png" />
-    <BundleResource Include="Resources\mainIcoMedium.png" />
+    <BundleResource Include="Resources\mainIcoMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
     <BundleResource Include="Resources\mainIcoSmall.png" />
   </ItemGroup>
   <ItemGroup>

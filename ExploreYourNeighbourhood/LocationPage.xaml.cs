@@ -32,7 +32,6 @@ namespace ExploreYourNeighbourhood
 
 			LocationList.ItemsSource = LocationInformation;
 
-			//await postLocationAsync();
 		}
     }
 }

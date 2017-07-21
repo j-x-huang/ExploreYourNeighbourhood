@@ -48,7 +48,7 @@ namespace ExploreYourNeighbourhood
 			{
 				return file.GetStream();
 			});
-
+			resultBtn.IsVisible = false;
 
 			await MakePredictionRequest(file);
 		}
@@ -119,40 +119,50 @@ namespace ExploreYourNeighbourhood
 
 					}
 
-
-                    int maxIndex = probabilityList.IndexOf(probabilityList.Max());
-                    var itemName = itemList[maxIndex];
-                    string realName="";
-                    switch (itemName)
+                    if (probabilityList.Max() > 0.5)
                     {
-                        case "Stop":
-                            realName = "stop sign";
-                            break;
-                        case "Post":
-                            realName = "post box";
-                            break;
-                        case "Bench":
-                            realName = "park bench";
-                            break;
-                        case "Booth":
-                            realName = "phone booth";
-                            break;
-                        case "Pohutukawa":
-                            realName = "Pohutukawa";
-                            break;
-                            
+                        int maxIndex = probabilityList.IndexOf(probabilityList.Max());
+                        var itemName = itemList[maxIndex];
+                        string realName = "";
+                        switch (itemName)
+                        {
+                            case "Stop":
+                                realName = "stop sign";
+                                break;
+                            case "Post":
+                                realName = "post box";
+                                break;
+                            case "Bench":
+                                realName = "park bench";
+                                break;
+                            case "Booth":
+                                realName = "phone booth";
+                                break;
+                            case "Pohutukawa":
+                                realName = "Pohutukawa";
+                                break;
+
+                        }
+                        StatusLabel.Text = "You have found a " + realName;
+                        itemToPost = realName;
+                        resultBtn.IsVisible=true;
+                    } else {
+                        StatusLabel.Text = "It appears that the object you have found is not on the list";
                     }
-                    StatusLabel.Text = "You have found a " + realName;
-                    itemToPost = realName;
-                    await postLocationAsync();
+                    //await postLocationAsync();
                 } else {
-                    StatusLabel.Text = "Bad server response";
+                    StatusLabel.Text = "Bad server response. Please try again.";
                 }
 
 				//Get rid of file once we have finished using it
 				file.Dispose();
 			}
 		}
+
+		private async void SendData(object sender, EventArgs e)
+        {
+            await postLocationAsync();
+        }
 
 		async Task postLocationAsync()
 		{
