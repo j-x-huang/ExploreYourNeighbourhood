@@ -21,13 +21,18 @@ namespace ExploreYourNeighbourhood
 		{
 			List<LocationModel> LocationInformation = await AzureManager.AzureManagerInstance.GetLocationInformation();
 
+
 			foreach (LocationModel model in LocationInformation)
 			{
 
 				var position = new Position(Convert.ToDouble(model.Latitude), Convert.ToDouble(model.Longitude));
 				var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
-				foreach (var address in possibleAddresses)
-					model.City = address;
+                foreach (var address in possibleAddresses)
+                {
+                    model.City = address;
+                    //System.Diagnostics.Debug.WriteLine(address);
+                }
+
 			}
 
 			LocationList.ItemsSource = LocationInformation;

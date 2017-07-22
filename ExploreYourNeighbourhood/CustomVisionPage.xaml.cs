@@ -95,15 +95,13 @@ namespace ExploreYourNeighbourhood
 
 					foreach (var item in Tag)
 					{
-						//TagLabel.Text += item + ": \n";
                         itemList.Add(item);
-						System.Diagnostics.Debug.WriteLine(item);
+						//System.Diagnostics.Debug.WriteLine(item);
 
 					}
 
                     foreach (var item in Probability)
                     {
-						//PredictionLabel.Text += item + "\n";
 						
                         if (item.ToString().ToLower().Contains("e"))
 						{
@@ -114,7 +112,7 @@ namespace ExploreYourNeighbourhood
 						{
 							probabilityList.Add(Convert.ToDouble(item.ToString()));
 						}
-						System.Diagnostics.Debug.WriteLine(item);
+						//System.Diagnostics.Debug.WriteLine(item);
 
 
 					}
@@ -149,7 +147,6 @@ namespace ExploreYourNeighbourhood
                     } else {
                         StatusLabel.Text = "It appears that the object you have found is not on the list";
                     }
-                    //await postLocationAsync();
                 } else {
                     StatusLabel.Text = "Bad server response. Please try again.";
                 }

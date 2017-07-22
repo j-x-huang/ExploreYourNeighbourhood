@@ -4,10 +4,9 @@
     <ContentPage.Content>
         <StackLayout Margin="20" Orientation="Vertical">
             <Button Text="Take Photo and Analyze" Clicked="loadCamera" />
-            <Label x:Name="StatusLabel">
-            </Label>
-            <Image x:Name="image" Aspect="AspectFit" />
-            <Button x:Name="resultBtn" Text="Save Results" IsVisible="false" Clicked="SendData"/>
+                <Image x:Name="image" Aspect="AspectFit" />
+                <Label x:Name="StatusLabel" />
+                <Button x:Name="resultBtn" Text="Save Results" IsVisible="false" Clicked="SendData"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

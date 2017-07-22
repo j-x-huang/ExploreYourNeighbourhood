@@ -7,6 +7,21 @@
         <StackLayout>
             <Button Text="Refresh" TextColor="White" BackgroundColor="Aqua" Clicked="Handle_ClickedAsync" Margin="10, 20, 10, 0"/>
             <ListView x:Name="LocationList" HasUnevenRows="true">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45*" />
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="35*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Address" XAlign="Center"/>
+                        <Label Grid.Column="1" Text="Item"  XAlign="Center"/>
+                        <Label Grid.Column="2" Text="Found on" XAlign="Center" />
+                    </Grid>
+                </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

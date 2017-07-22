@@ -173,6 +173,7 @@
     <BundleResource Include="Resources\mainIco2.png" />
     <BundleResource Include="Resources\mainIcoMedium.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInPackage>false</IncludeInPackage>
     </BundleResource>
     <BundleResource Include="Resources\mainIcoSmall.png" />
   </ItemGroup>
