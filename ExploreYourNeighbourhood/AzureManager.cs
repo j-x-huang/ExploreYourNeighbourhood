@@ -13,7 +13,7 @@ namespace ExploreYourNeighbourhood
 
 		private AzureManager()
 		{
-			this.client = new MobileServiceClient("https://jxh-myhotdog.azurewebsites.net");
+			this.client = new MobileServiceClient("http://exploreyourneighbourhood.azurewebsites.net");
 			this.locationTable = this.client.GetTable<LocationModel>();
 
 		}

@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Geolocator;
+using Xamarin.Forms.Maps;
 
 
 using Xamarin.Forms;
@@ -19,9 +20,12 @@ namespace ExploreYourNeighbourhood
     public partial class CustomVisionPage : ContentPage
     {
         string itemToPost = "";
+        Geocoder geoCoder;
+
         public CustomVisionPage()
         {
             InitializeComponent();
+            geoCoder = new Geocoder();
         }
 		
         private async void loadCamera(object sender, EventArgs e)
@@ -169,15 +173,24 @@ namespace ExploreYourNeighbourhood
 
 			var position = await locator.GetPositionAsync(10000);
 
-			DateTime dateTime = DateTime.UtcNow.Date;
 
+
+            var locationPin = new Position(position.Latitude, position.Longitude);
+            var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(locationPin);
+
+			string city = "";
+			foreach (var address in possibleAddresses)
+			{
+				city = address;
+                System.Diagnostics.Debug.WriteLine(address);
+			}
+			DateTime dateTime = DateTime.UtcNow.Date;
 
 			LocationModel model = new LocationModel()
             {
-                Longitude = position.Longitude.ToString(),
-                Latitude = position.Latitude.ToString(),
-                Item = itemToPost,
-                CurrentDate = dateTime.ToString("dd/MM/yyyy")
+				City = city,
+				Item = itemToPost,
+                CurrentDate = dateTime.ToString("dd/MM/yyyy")                                    
 
 			};
 

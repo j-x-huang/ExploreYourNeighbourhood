@@ -8,11 +8,15 @@ namespace ExploreYourNeighbourhood
         [JsonProperty(PropertyName = "Id")]
         public string ID { get; set; }
 
+        /*
         [JsonProperty(PropertyName = "Longitude")]
         public string Longitude { get; set; }
 
         [JsonProperty(PropertyName = "Latitude")]
         public string Latitude { get; set; }
+        */
+		[JsonProperty(PropertyName = "City")]
+		public string City { get; set; }
 
 		[JsonProperty(PropertyName = "Item")]
 		public string Item { get; set; }
@@ -20,7 +24,6 @@ namespace ExploreYourNeighbourhood
 		[JsonProperty(PropertyName = "Date")]
 		public string CurrentDate { get; set; }
 
-		public string City { get; set; }
 
 
 	}

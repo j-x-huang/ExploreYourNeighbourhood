@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Plugin.Geolocator;
 using Xamarin.Forms.Maps;
 
 using Xamarin.Forms;
@@ -21,7 +20,7 @@ namespace ExploreYourNeighbourhood
 		{
 			List<LocationModel> LocationInformation = await AzureManager.AzureManagerInstance.GetLocationInformation();
 
-
+            /*
 			foreach (LocationModel model in LocationInformation)
 			{
 
@@ -34,7 +33,7 @@ namespace ExploreYourNeighbourhood
                 }
 
 			}
-
+            */
 			LocationList.ItemsSource = LocationInformation;
 
 		}
