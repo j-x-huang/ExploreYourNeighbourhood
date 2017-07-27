@@ -178,23 +178,33 @@ namespace ExploreYourNeighbourhood
             var locationPin = new Position(position.Latitude, position.Longitude);
             var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(locationPin);
 
+            List<string> addressList = possibleAddresses.ToList();
 			string city = "";
-			foreach (var address in possibleAddresses)
-			{
-				city = address;
-                System.Diagnostics.Debug.WriteLine(address);
-			}
-			DateTime dateTime = DateTime.UtcNow.Date;
 
-			LocationModel model = new LocationModel()
-            {
-				City = city,
-				Item = itemToPost,
-                CurrentDate = dateTime.ToString("dd/MM/yyyy")                                    
+            if (addressList.Count() > 0) {
+                city = addressList[0];
+                string[] splitArray=city.Split('\n');
+                string city2 = "";
+                if (splitArray.Count() > 1) {
+                    city2 = splitArray[1];
+                }
 
-			};
+				DateTime dateTime = DateTime.UtcNow.Date;
 
-			await AzureManager.AzureManagerInstance.PostLocationInformation(model);
+				LocationModel model = new LocationModel()
+				{
+					City = city2,
+					Item = itemToPost,
+					CurrentDate = dateTime.ToString("dd/MM/yyyy")
+
+				};
+                System.Diagnostics.Debug.WriteLine("here");
+                await AzureManager.AzureManagerInstance.PostLocationInformation(model);
+
+            } else {
+                resultsLabel.Text = "Save failed";
+            }
+
 
 		}
     }
