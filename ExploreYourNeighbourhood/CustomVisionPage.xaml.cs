@@ -129,16 +129,16 @@ namespace ExploreYourNeighbourhood
                         switch (itemName)
                         {
                             case "Stop":
-                                realName = "stop sign";
+                                realName = "Stop Sign";
                                 break;
                             case "Post":
-                                realName = "post box";
+                                realName = "Post Box";
                                 break;
                             case "Bench":
-                                realName = "park bench";
+                                realName = "Park Bench";
                                 break;
                             case "Booth":
-                                realName = "phone booth";
+                                realName = "Phone Booth";
                                 break;
                             case "Pohutukawa":
                                 realName = "Pohutukawa";
@@ -162,6 +162,8 @@ namespace ExploreYourNeighbourhood
 
 		private async void SendData(object sender, EventArgs e)
         {
+            resultBtn.IsVisible = false;
+            resultsLabel.Text = "Saving..";
             await postLocationAsync();
         }
 
@@ -183,25 +185,31 @@ namespace ExploreYourNeighbourhood
 
             if (addressList.Count() > 0) {
                 city = addressList[0];
+                //System.Diagnostics.Debug.WriteLine(city);
                 string[] splitArray=city.Split('\n');
-                string city2 = "";
-                if (splitArray.Count() > 1) {
-                    city2 = splitArray[1];
+                string cityShort = "";
+                if (splitArray.Count() > 2) {
+                    cityShort = splitArray[2] + '\n' + splitArray[1];
                 }
 
 				DateTime dateTime = DateTime.UtcNow.Date;
 
 				LocationModel model = new LocationModel()
 				{
-					City = city2,
+					City = cityShort,
 					Item = itemToPost,
 					CurrentDate = dateTime.ToString("dd/MM/yyyy")
 
 				};
-                System.Diagnostics.Debug.WriteLine("here");
-                await AzureManager.AzureManagerInstance.PostLocationInformation(model);
+
+                Task postInfo = AzureManager.AzureManagerInstance.PostLocationInformation(model);
+                await postInfo;
+                if (postInfo.IsCompleted)
+                    resultsLabel.Text = "Saved!";
+                //await AzureManager.AzureManagerInstance.PostLocationInformation(model);
 
             } else {
+                resultBtn.IsVisible = true;
                 resultsLabel.Text = "Save failed";
             }
 

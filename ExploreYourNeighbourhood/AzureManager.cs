@@ -42,7 +42,7 @@ namespace ExploreYourNeighbourhood
 
         public async Task PostLocationInformation(LocationModel locationModel)
 		{
-            await this.locationTable.InsertAsync(locationModel);
+            await locationTable.InsertAsync(locationModel);
 		}
 
 	}

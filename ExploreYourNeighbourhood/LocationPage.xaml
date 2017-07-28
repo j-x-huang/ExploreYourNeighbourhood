@@ -17,9 +17,9 @@
                                     <ColumnDefinition Width="20*" />
                                     <ColumnDefinition Width="35*" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Address" Margin="20,0,0,0"/>
-                        <Label Grid.Column="1" Text="Item" />
-                        <Label Grid.Column="2" Text="Found on" Margin="0,0,20,0" />
+                        <Label Grid.Column="0" Text="City" Margin="20,0,0,0" Font="Bold,16"/>
+                        <Label Grid.Column="1" Text="Item" Font="Bold,16"/>
+                        <Label Grid.Column="2" Text="Found on" Margin="0,0,20,0" Font="Bold,16"/>
                     </Grid>
                 </ListView.Header>
                 <ListView.ItemTemplate>
