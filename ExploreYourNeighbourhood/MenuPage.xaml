@@ -8,7 +8,14 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Find these things" HorizontalOptions="Center" Margin="20">
+            <Label Text="Find these things" HorizontalOptions="Center" Margin="0,20,0,0">
+                    <Label.FontFamily>
+        <OnPlatform x:TypeArguments="x:String">
+            <OnPlatform.iOS>AppleSDGothicNeo-Bold  </OnPlatform.iOS>
+            <OnPlatform.Android></OnPlatform.Android>
+        </OnPlatform>
+    </Label.FontFamily>
+
             </Label>
             <ListView   x:Name="listView" HasUnevenRows="true">
                 <ListView.ItemTemplate>

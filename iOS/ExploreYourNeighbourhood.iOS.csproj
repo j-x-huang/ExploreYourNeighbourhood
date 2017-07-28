@@ -160,9 +160,7 @@
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\parkBench.jpg" />
     <BundleResource Include="Resources\post.jpg" />
-    <BundleResource Include="Resources\stop.jpg" />
     <BundleResource Include="Resources\cam_ico.png" />
     <BundleResource Include="Resources\map_ico.png" />
     <BundleResource Include="Resources\menu_ico.png" />
@@ -176,6 +174,9 @@
       <IncludeInPackage>false</IncludeInPackage>
     </BundleResource>
     <BundleResource Include="Resources\mainIcoSmall.png" />
+    <BundleResource Include="Resources\booth.jpg" />
+    <BundleResource Include="Resources\bench.jpg" />
+    <BundleResource Include="Resources\stop.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

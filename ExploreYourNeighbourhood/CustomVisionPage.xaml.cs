@@ -74,7 +74,7 @@ namespace ExploreYourNeighbourhood
 
 			client.DefaultRequestHeaders.Add("Prediction-Key", "b582db3effb145019697ca4ea0b6a6f6");
 
-			string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/3756e514-0165-4d5b-946b-5751936002ff/image?iterationId=896a826d-cb3a-48fc-9fc8-fac64d198b6b";
+			string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/3756e514-0165-4d5b-946b-5751936002ff/image?iterationId=414ec412-072e-4cf5-a99f-329762fdd796";
 
 			HttpResponseMessage response;
 
@@ -172,9 +172,8 @@ namespace ExploreYourNeighbourhood
 
 			var locator = CrossGeolocator.Current;
 			locator.DesiredAccuracy = 50;
-
+            resultsLabel.Text = "Saving.. Getting location";
 			var position = await locator.GetPositionAsync(10000);
-
 
 
             var locationPin = new Position(position.Latitude, position.Longitude);
@@ -201,7 +200,7 @@ namespace ExploreYourNeighbourhood
 					CurrentDate = dateTime.ToString("dd/MM/yyyy")
 
 				};
-
+                resultsLabel.Text = "Saving.. Uploading to cloud";
                 Task postInfo = AzureManager.AzureManagerInstance.PostLocationInformation(model);
                 await postInfo;
                 if (postInfo.IsCompleted)
