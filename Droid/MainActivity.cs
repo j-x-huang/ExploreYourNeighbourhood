@@ -20,9 +20,17 @@ namespace ExploreYourNeighbourhood.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+			global::Xamarin.Forms.Forms.Init(this, bundle);
+			Xamarin.FormsMaps.Init(this, bundle);
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
-            LoadApplication(new App());
+			LoadApplication(new App());
         }
+
+
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+		{
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+		}
     }
 }
