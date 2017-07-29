@@ -34,7 +34,7 @@ namespace ExploreYourNeighbourhood
 
 			if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
 			{
-				await DisplayAlert("No Camera", ":( No camera available.", "OK");
+				await DisplayAlert("No Camera", "No camera available", "OK");
 				return;
 			}
 
@@ -92,8 +92,7 @@ namespace ExploreYourNeighbourhood
                     var responseString = await response.Content.ReadAsStringAsync();
 
                     JObject rss = JObject.Parse(responseString);
-                    //Querying with LINQ
-                    //Get all Prediction Values
+
                     var Probability = from p in rss["Predictions"] select (string)p["Probability"];
                     var Tag = from p in rss["Predictions"] select (string)p["Tag"];
 
@@ -205,7 +204,6 @@ namespace ExploreYourNeighbourhood
                 await postInfo;
                 if (postInfo.IsCompleted)
                     resultsLabel.Text = "Saved!";
-                //await AzureManager.AzureManagerInstance.PostLocationInformation(model);
 
             } else {
                 resultBtn.IsVisible = true;
