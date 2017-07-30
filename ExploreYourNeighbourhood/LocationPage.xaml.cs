@@ -20,6 +20,7 @@ namespace ExploreYourNeighbourhood
 		{
 			List<LocationModel> LocationInformation = await AzureManager.AzureManagerInstance.GetLocationInformation();
 
+            //Display information from model in the listview 
 			LocationList.ItemsSource = LocationInformation;
 
 		}

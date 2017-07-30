@@ -12,8 +12,8 @@ namespace ExploreYourNeighbourhood
         {
             InitializeComponent();
             vm = new ItemViewModel();
+            //Show items
             listView.ItemsSource = vm.Items;
-			//BindingContext = vm;
 
 
 		}

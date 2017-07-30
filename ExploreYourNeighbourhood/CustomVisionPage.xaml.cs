@@ -105,7 +105,7 @@ namespace ExploreYourNeighbourhood
 
                     foreach (var item in Probability)
                     {
-						
+						//convert scientic notation into a double
                         if (item.ToString().ToLower().Contains("e"))
 						{
 							double x = Double.Parse(item.ToString(), System.Globalization.NumberStyles.Float);
@@ -115,7 +115,6 @@ namespace ExploreYourNeighbourhood
 						{
 							probabilityList.Add(Convert.ToDouble(item.ToString()));
 						}
-						//System.Diagnostics.Debug.WriteLine(item);
 
 
 					}
