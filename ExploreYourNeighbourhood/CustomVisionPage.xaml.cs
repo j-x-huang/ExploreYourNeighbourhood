@@ -28,6 +28,7 @@ namespace ExploreYourNeighbourhood
             geoCoder = new Geocoder();
         }
 		
+
         private async void loadCamera(object sender, EventArgs e)
 		{
 			await CrossMedia.Current.Initialize();
@@ -71,7 +72,7 @@ namespace ExploreYourNeighbourhood
 			var itemList = new List<string>();
             StatusLabel.Text = "Analysing..";
 
-
+            //Call API
 			client.DefaultRequestHeaders.Add("Prediction-Key", "b582db3effb145019697ca4ea0b6a6f6");
 
 			string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/3756e514-0165-4d5b-946b-5751936002ff/image?iterationId=414ec412-072e-4cf5-a99f-329762fdd796";
@@ -99,7 +100,6 @@ namespace ExploreYourNeighbourhood
 					foreach (var item in Tag)
 					{
                         itemList.Add(item);
-						//System.Diagnostics.Debug.WriteLine(item);
 
 					}
 
@@ -118,9 +118,10 @@ namespace ExploreYourNeighbourhood
 
 
 					}
-
+                    //Get the object if its probability is greater than 0.5
                     if (probabilityList.Max() > 0.5)
                     {
+                        //Get name of the object with the highest probability returned
                         int maxIndex = probabilityList.IndexOf(probabilityList.Max());
                         var itemName = itemList[maxIndex];
                         string realName = "";
@@ -144,7 +145,7 @@ namespace ExploreYourNeighbourhood
 
                         }
                         StatusLabel.Text = "You have found a " + realName;
-                        itemToPost = realName;
+                        itemToPost = realName; //name to be sent to server
                         resultBtn.IsVisible=true;
                     } else {
                         StatusLabel.Text = "It appears that the object you have found is not on the list";
@@ -167,19 +168,20 @@ namespace ExploreYourNeighbourhood
 
 		async Task postLocationAsync()
 		{
-
+            //Use Geolocator API to obtain longitude and latitude
 			var locator = CrossGeolocator.Current;
 			locator.DesiredAccuracy = 50;
             resultsLabel.Text = "Saving.. Getting location";
 			var position = await locator.GetPositionAsync(10000);
 
-
+            //Reverse geocoding using Xamarin Forms Maps
             var locationPin = new Position(position.Latitude, position.Longitude);
             var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(locationPin);
 
             List<string> addressList = possibleAddresses.ToList();
 			string city = "";
 
+            //Obtain the name of the suburb, postcode and city
             if (addressList.Count() > 0) {
                 city = addressList[0];
                 //System.Diagnostics.Debug.WriteLine(city);
@@ -188,7 +190,7 @@ namespace ExploreYourNeighbourhood
                 if (splitArray.Count() > 2) {
                     cityShort = splitArray[2] + '\n' + splitArray[1];
                 }
-
+                //Get current date
 				DateTime dateTime = DateTime.UtcNow.Date;
 
 				LocationModel model = new LocationModel()
@@ -201,6 +203,8 @@ namespace ExploreYourNeighbourhood
                 resultsLabel.Text = "Saving.. Uploading to cloud";
                 Task postInfo = AzureManager.AzureManagerInstance.PostLocationInformation(model);
                 await postInfo;
+
+                //check if it is successful with posting the information to cloud
                 if (postInfo.IsCompleted)
                     resultsLabel.Text = "Saved!";
 
