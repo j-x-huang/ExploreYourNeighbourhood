@@ -15,7 +15,7 @@ All icons and images used in the app are licensed under Creative Commons.
 * [Home Page](https://png.icons8.com/home-page/ios7/25)
 * [Map Marker](https://png.icons8.com/map-marker/ios7/25)
 * [Map Marker-Color](https://png.icons8.com/map-marker/color/24)
-* [Camera](https://png.icons8.com/camera/ios7/25" title="Camera)
+* [Camera](https://png.icons8.com/camera/ios7/25)
 
 ### Pictures
 
