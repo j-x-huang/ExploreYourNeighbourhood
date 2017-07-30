@@ -13,10 +13,10 @@ namespace ExploreYourNeighbourhood.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-			global::Xamarin.FormsMaps.Init();
+			global::Xamarin.FormsMaps.Init(); //initialise maps
 
 
-			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init(); //initialise mobile client
 
             LoadApplication(new App());
 

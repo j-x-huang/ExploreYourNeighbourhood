@@ -11,6 +11,7 @@ namespace ExploreYourNeighbourhood
         public string Difficulty { get; set; }
         public string Colour { get; set; }
 
+        //items that users need to find
         public List<Item> GetItems()
         {
             List<Item> itemList = new List<Item>()
@@ -28,7 +29,7 @@ namespace ExploreYourNeighbourhood
     public class ItemViewModel
     {
         public List<Item> Items { get; set; }
-
+         
         public ItemViewModel()
         {
             Items = new Item().GetItems();
