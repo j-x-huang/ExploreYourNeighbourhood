@@ -118,7 +118,7 @@ namespace ExploreYourNeighbourhood
 
 
 					}
-                    //Get the object if its probability is greater than 0.5
+                    //Get the object(s) if its probability is greater than 0.5
                     if (probabilityList.Max() > 0.5)
                     {
                         //Get name of the object with the highest probability returned
